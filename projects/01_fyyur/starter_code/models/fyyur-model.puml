@@ -1,0 +1,59 @@
+@startuml
+' Mac preview: option + D
+
+title Fyyur
+
+class Venue {
+  id : Integer pk
+  {field} name : String() 
+  genre : String
+  city: String
+  state : String
+  address : String
+  phone : String
+  website : String
+  {field} image_link : String(500)
+  facebook_link : String
+  seeking_talent : Boolean
+  {field} seeking_description : String(500)
+  past_shows : Array of Show Objects, filtered by Venue, with date in the past
+  upcoming_shows : Array of Show Objects, filtered by Venue, with date in the future
+  {field} past_shows_count : Integer (length of past_shows)
+  {field} upcoming_shows_count : Integer (length of upcoming_shows)
+  num_upcoming_shows : Integer 
+}
+
+class Artist {
+  id : Integer pk
+  {field} name : String() 
+  city: String
+  state : String
+  phone : String
+  genre : String
+  {field} image_link : String(500)
+  facebook_link : String
+  seeking_venue : Boolean
+  {field} seeking_description : String(500)
+  past_shows : Array of Show Objects, filtered by Artist, with date in the past
+  upcoming_shows : Array of Show Objects, filtered by Artist, with date in the future
+  {field} past_shows_count : Integer (length of past_shows)
+  {field} upcoming_shows_count : Integer (length of upcoming_shows)
+}
+
+class Shows as "Show" {
+  artist_id : ForeignKey Artist.id
+  artist_name : use Artist.id to retrieve Artist.name 
+  artist_image_link : use Artist.id to retrieve Artist.image_link 
+  venue_id : ForeignKey Venue.id
+  venue_name : use Venue.id to retrieve Venue.name 
+  venue_image_link : use Venue.id to retrieve Venue.image_link 
+  start_time : Date
+}
+
+Venue "*" -- "*" Artist
+(Venue, Artist) .. Shows
+
+legend
+max String length is 120, unless otherwise noted
+end legend
+@enduml
