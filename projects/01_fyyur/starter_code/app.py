@@ -32,27 +32,36 @@ class Venue(db.Model):
     __tablename__ = 'Venue'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(120))
+    name = db.Column(db.String, nullable=False)
+    genre = db.Column(db.String) #placeholder for a future Genre array
+    city = db.Column(db.String(120), nullable=False)
+    state = db.Column(db.String(120), nullable=False)
     address = db.Column(db.String(120))
-    phone = db.Column(db.String(120))
+    phone = db.Column(db.String(120), nullable=False)
+    website = db.Column(db.String(120))
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
+    seeking_talent = db.Column(db.Boolean, default=False)
+    seeking_description = db.Column(db.String(500))
+    past_shows = db.Column(db.String) #placeholder for a future Show array 
+    upcoming_shows = db.Column(db.String) #placeholder for a future Show array 
+    past_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of past_shows 
+    upcoming_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of upcoming_shows 
+
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
-class Artist(db.Model):
-    __tablename__ = 'Artist'
+# class Artist(db.Model):
+#     __tablename__ = 'Artist'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(120))
-    phone = db.Column(db.String(120))
-    genres = db.Column(db.String(120))
-    image_link = db.Column(db.String(500))
-    facebook_link = db.Column(db.String(120))
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String)
+#     city = db.Column(db.String(120))
+#     state = db.Column(db.String(120))
+#     phone = db.Column(db.String(120))
+#     genres = db.Column(db.String(120))
+#     image_link = db.Column(db.String(500))
+#     facebook_link = db.Column(db.String(120))
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
