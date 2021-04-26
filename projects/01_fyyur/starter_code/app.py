@@ -33,7 +33,7 @@ class Venue(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
-  genre = db.Column(db.String) #placeholder for a future Genre array
+  genres = db.Column(db.String) #placeholder for a future Genre array
   city = db.Column(db.String(120))
   state = db.Column(db.String(120))
   address = db.Column(db.String(120))
@@ -66,8 +66,6 @@ class Artist(db.Model):
   upcoming_shows = db.Column(db.String) #placeholder for a future Show array 
   past_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of past_shows 
   upcoming_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of upcoming_shows 
-
-    # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 

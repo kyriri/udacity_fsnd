@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('venues',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('name', sa.String(), nullable=False),
-        sa.Column('genre', sa.String(), nullable=True),
+        sa.Column('genres', sa.String(), nullable=True),
         sa.Column('city', sa.String(length=120), nullable=True),
         sa.Column('state', sa.String(length=120), nullable=True),
         sa.Column('address', sa.String(length=120), nullable=True),
