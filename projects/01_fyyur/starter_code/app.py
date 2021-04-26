@@ -28,6 +28,12 @@ migrate = Migrate(app, db)
 # Models.
 #----------------------------------------------------------------------------#
 
+# shows = db.Table('shows',
+#     db.Column('venue_id', db.Integer, db.ForeignKey('venues.id'), primary_key=True),
+#     db.Column('artist_id', db.Integer, db.ForeignKey('artists.id'), primary_key=True)
+#     db.Column('start_time', db.Date, nullable=False)
+# )
+
 class Venue(db.Model):
   __tablename__ = 'venues'
 
@@ -43,29 +49,22 @@ class Venue(db.Model):
   facebook_link = db.Column(db.String(120))
   seeking_talent = db.Column(db.Boolean, default=False)
   seeking_description = db.Column(db.String(500))
-  past_shows = db.Column(db.String) #placeholder for a future Show array 
-  upcoming_shows = db.Column(db.String) #placeholder for a future Show array 
-  past_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of past_shows 
-  upcoming_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of upcoming_shows 
+  # shows = db.relationship('Artist', secondary=shows,
+  #   backref=db.backref('artists', lazy=True))
 
+# class Artist(db.Model):
+#   __tablename__ = 'artists'
 
-class Artist(db.Model):
-  __tablename__ = 'artists'
-
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String, nullable=False)
-  city = db.Column(db.String(120))
-  state = db.Column(db.String(120))
-  phone = db.Column(db.String(120))
-  genres = db.Column(db.String) #placeholder for a future Genre array
-  image_link = db.Column(db.String(500))
-  facebook_link = db.Column(db.String(120))
-  seeking_venue = db.Column(db.Boolean, default=False)
-  seeking_description = db.Column(db.String(500))
-  past_shows = db.Column(db.String) #placeholder for a future Show array 
-  upcoming_shows = db.Column(db.String) #placeholder for a future Show array 
-  past_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of past_shows 
-  upcoming_shows_count = db.Column(db.Integer) #placeholder for some future thing returning the length of upcoming_shows 
+#   id = db.Column(db.Integer, primary_key=True)
+#   name = db.Column(db.String, nullable=False)
+#   city = db.Column(db.String(120))
+#   state = db.Column(db.String(120))
+#   phone = db.Column(db.String(120))
+#   genres = db.Column(db.String) #placeholder for a future Genre array
+#   image_link = db.Column(db.String(500))
+#   facebook_link = db.Column(db.String(120))
+#   seeking_venue = db.Column(db.Boolean, default=False)
+#   seeking_description = db.Column(db.String(500))
 
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 

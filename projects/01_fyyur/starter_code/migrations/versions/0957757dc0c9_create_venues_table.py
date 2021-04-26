@@ -31,10 +31,6 @@ def upgrade():
         sa.Column('facebook_link', sa.String(length=120), nullable=True),
         sa.Column('seeking_talent', sa.Boolean(), nullable=True),
         sa.Column('seeking_description', sa.String(length=500), nullable=True),
-        sa.Column('past_shows', sa.String(), nullable=True),
-        sa.Column('upcoming_shows', sa.String(), nullable=True),
-        sa.Column('past_shows_count', sa.Integer(), nullable=True),
-        sa.Column('upcoming_shows_count', sa.Integer(), nullable=True),
         sa.PrimaryKeyConstraint('id')
     )
 

@@ -29,10 +29,6 @@ def upgrade():
         sa.Column('facebook_link', sa.String(length=120), nullable=True),
         sa.Column('seeking_venue', sa.Boolean(), nullable=True),
         sa.Column('seeking_description', sa.String(length=500), nullable=True),
-        sa.Column('past_shows', sa.String(), nullable=True),
-        sa.Column('upcoming_shows', sa.String(), nullable=True),
-        sa.Column('past_shows_count', sa.Integer(), nullable=True),
-        sa.Column('upcoming_shows_count', sa.Integer(), nullable=True),
         sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
@@ -40,7 +36,7 @@ def upgrade():
     # ### populate database with test data ###
     op.execute("INSERT INTO artists (id, name, city, state, phone, seeking_venue, seeking_description) VALUES (1, 'Matthieu Arnaud', 'Paris', 'IDF', '+33 1 60 33 06 03', True, 'Je cherche une scène hebdomadaire')")
     op.execute("INSERT INTO artists (id, name, city, seeking_venue, seeking_description) VALUES (2, 'Jorge Drexler', 'Montevideo', False, 'Madrid es suficiente...')")
-    op.execute("INSERT INTO artists (id, name, city) VALUES (3, 'Deft Punk', 'unknown')")
+    op.execute("INSERT INTO artists (id, name, city) VALUES (3, 'Apt Punk', 'unknown')")
 
 
 def downgrade():
