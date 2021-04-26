@@ -29,13 +29,13 @@ migrate = Migrate(app, db)
 #----------------------------------------------------------------------------#
 
 class Venue(db.Model):
-    __tablename__ = 'Venue'
+    __tablename__ = 'venues'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     genre = db.Column(db.String) #placeholder for a future Genre array
-    city = db.Column(db.String(120), nullable=False)
-    state = db.Column(db.String(120), nullable=False)
+    city = db.Column(db.String(120))
+    state = db.Column(db.String(120))
     address = db.Column(db.String(120))
     phone = db.Column(db.String(120), nullable=False)
     website = db.Column(db.String(120))
