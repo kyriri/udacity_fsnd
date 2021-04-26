@@ -6,7 +6,7 @@ title Fyyur
 class Venue {
   id : Integer pk
   {field} name : String() 
-  genre : String
+  genres : Array
   city: String
   state : String
   address : String
@@ -29,7 +29,7 @@ class Artist {
   city: String
   state : String
   phone : String
-  genre : String
+  genres : Array
   {field} image_link : String(500)
   facebook_link : String
   seeking_venue : Boolean
