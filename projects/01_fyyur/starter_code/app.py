@@ -40,7 +40,7 @@ class Show(db.Model): #association object
   venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), primary_key=True)
   artist_id = db.Column(db.Integer, db.ForeignKey('artists.id'), primary_key=True)
   id = db.Column(db.Integer, primary_key=True)
-  start_time = db.Column(db.DateTime, nullable=False)
+  start_time = db.Column(db.DateTime(timezone=True), nullable=False)
   venue = db.relationship("Venue", back_populates="alltime_performers") #1
   artist = db.relationship("Artist", back_populates="has_performed_at") #2
 
