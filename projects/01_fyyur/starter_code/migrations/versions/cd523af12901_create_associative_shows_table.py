@@ -29,11 +29,11 @@ def upgrade():
     # ### end Alembic commands ###
 
     # ### populate database with test data ###
-    op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (1, 1, 1, '2020-03-27 18:10:00')")
-    op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (2, 1, 1, '2020-03-20 18:10:00')")
-    op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (3, 1, 1, '2020-03-13 18:10:00')")
-    op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (4, 2, 3, '2021-04-30 20:00')")
-    op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (5, 3, 1, '2021-12-01 22:00')")
+    # op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (1, 1, 1, '2020-03-27 18:10:00')")
+    # op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (2, 1, 1, '2020-03-20 18:10:00')")
+    # op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (3, 1, 1, '2020-03-13 18:10:00')")
+    # op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (4, 2, 3, '2021-04-30 20:00')")
+    # op.execute("INSERT INTO shows (id, venue_id, artist_id, start_time) VALUES (5, 3, 1, '2021-12-01 22:00')")
     ## problem: inserted this way, the hour always has the timezone of the server
 
 def downgrade():
