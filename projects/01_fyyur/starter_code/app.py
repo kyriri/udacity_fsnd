@@ -384,17 +384,12 @@ def create_artist_submission():
 
 @app.route('/artists')
 def artists():
-  # TODO: replace with real data returned from querying the database
-  data=[{
-    "id": 4,
-    "name": "Guns N Petals",
-  }, {
-    "id": 5,
-    "name": "Matt Quevedo",
-  }, {
-    "id": 6,
-    "name": "The Wild Sax Band",
-  }]
+  # here below I'm querying all the DB when I actually only need id and name. 
+  # what's more efficient: query all or just what I need?
+
+  # another issue: order by is case sensitive, it lists A B C then a b c
+  
+  data = Artist.query.order_by('name').all()
   return render_template('pages/artists.html', artists=data)
 
 @app.route('/artists/<int:artist_id>')
