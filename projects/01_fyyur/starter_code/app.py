@@ -241,8 +241,8 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
-  # error = False
-  # try:
+  error = False
+  try:
     name = request.form['name']
     city = request.form['city']
     state = request.form['state']
@@ -272,16 +272,16 @@ def create_venue_submission():
       )
     db.session.add(new_venue)
     db.session.commit()
-  # except:
-  #   error = True
-  #   db.session.rollback()
-  # finally:
-  #   db.session.close()
-  # if error:
-  #   flash('An error occurred. Venue ' + request.form['name'] + ' could not be listed.')
-  # else:
+  except:
+    error = True
+    db.session.rollback()
+  finally:
+    db.session.close()
+  if error:
+    flash('An error occurred. Venue ' + request.form['name'] + ' could not be listed.')
+  else:
     flash('Venue ' + request.form['name'] + ' was successfully listed!')
-    return render_template('pages/home.html')
+  return render_template('pages/home.html')
     
   # TODO: modify data to be the data object returned from db insertion
 
