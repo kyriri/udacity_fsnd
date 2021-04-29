@@ -257,7 +257,7 @@ def create_venue_submission():
     else:
       seeking_talent = False
     seeking_description = request.form['seeking_description']
-    new_venue = Venue(
+    new = Venue(
       name = name,
       city = city,
       state = state,
@@ -270,7 +270,7 @@ def create_venue_submission():
       seeking_talent = seeking_talent, 
       seeking_description = seeking_description, 
       )
-    db.session.add(new_venue)
+    db.session.add(new)
     db.session.commit()
   except:
     error = True
@@ -482,7 +482,7 @@ def create_artist_submission():
     else:
       seeking_venue = False
     seeking_description = request.form['seeking_description']
-    new_venue = Artist(
+    new = Artist(
       name = name,
       city = city,
       state = state,
@@ -493,7 +493,7 @@ def create_artist_submission():
       seeking_venue = seeking_venue, 
       seeking_description = seeking_description, 
       )
-    db.session.add(new_venue)
+    db.session.add(new)
     db.session.commit()
   except:
     error = True
