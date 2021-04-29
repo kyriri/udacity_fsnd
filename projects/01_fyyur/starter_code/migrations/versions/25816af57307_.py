@@ -34,9 +34,9 @@ def upgrade():
     # ### end Alembic commands ###
 
     # ### populate database with test data ###
-    op.execute("INSERT INTO artists (id, name, city, state, phone, seeking_venue, seeking_description) VALUES (1, 'Matthieu Arnaud', 'Paris', 'IDF', '+33 1 60 33 06 03', True, 'Je cherche une scène hebdomadaire')")
-    op.execute("INSERT INTO artists (id, name, city, seeking_venue, seeking_description) VALUES (2, 'Jorge Drexler', 'Montevideo', False, 'Madrid es suficiente...')")
-    op.execute("INSERT INTO artists (id, name, city) VALUES (3, 'Apt Punk', 'unknown')")
+    op.execute("INSERT INTO artists (id, name, city, state, phone, seeking_venue, seeking_description) VALUES (101, 'Matthieu Arnaud', 'Paris', 'IDF', '+33 1 60 33 06 03', True, 'Je cherche une scène hebdomadaire')")
+    op.execute("INSERT INTO artists (id, name, city, seeking_venue, seeking_description) VALUES (102, 'Jorge Drexler', 'Montevideo', False, 'Madrid es suficiente...')")
+    op.execute("INSERT INTO artists (id, name, city) VALUES (103, 'Apt Punk', 'unknown')")
 
 
 def downgrade():
