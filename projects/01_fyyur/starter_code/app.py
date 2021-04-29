@@ -53,7 +53,7 @@ class Venue(db.Model):
   city = db.Column(db.String(120))
   state = db.Column(db.String(120))
   address = db.Column(db.String(120))
-  phone = db.Column(db.String(120), nullable=False)
+  phone = db.Column(db.String(120))
   website_link = db.Column(db.String(120))
   image_link = db.Column(db.String(500))
   facebook_link = db.Column(db.String(120))
@@ -241,8 +241,6 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
-  # TODO: insert form data as a new Venue record in the db, instead
-  # TODO: modify data to be the data object returned from db insertion
   # error = False
   # try:
     name = request.form['name']
@@ -254,7 +252,10 @@ def create_venue_submission():
     facebook_link = request.form['facebook_link']
     image_link = request.form['image_link']
     website_link = request.form['website_link']
-    seeking_talent = request.form.get('seeking_talent')
+    if request.form.get('seeking_talent') == 'y':
+      seeking_talent = True
+    else:
+      seeking_talent = False
     seeking_description = request.form['seeking_description']
     new_venue = Venue(
       name = name,
@@ -267,8 +268,6 @@ def create_venue_submission():
       image_link = image_link,
       website_link = website_link,
       seeking_talent = seeking_talent, 
-      # next: 
-      # reinstate try/except/finally construction
       seeking_description = seeking_description, 
       )
     db.session.add(new_venue)
@@ -280,12 +279,11 @@ def create_venue_submission():
   #   db.session.close()
   # if error:
   #   flash('An error occurred. Venue ' + request.form['name'] + ' could not be listed.')
-  # # TODO: on unsuccessful db insert, flash an error instead.
-  # # e.g., flash('An error occurred. Venue ' + data.name + ' could not be listed.')
-  # # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
   # else:
     flash('Venue ' + request.form['name'] + ' was successfully listed!')
     return render_template('pages/home.html')
+    
+  # TODO: modify data to be the data object returned from db insertion
 
 @app.route('/venues/<venue_id>', methods=['DELETE'])
 def delete_venue(venue_id):
