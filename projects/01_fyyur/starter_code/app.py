@@ -254,10 +254,10 @@ def create_venue_submission():
     facebook_link = request.form['facebook_link']
     image_link = request.form['image_link']
     website_link = request.form['website_link']
-    seeking_talent = request.form['seeking_talent']
+    seeking_talent = request.form.get('seeking_talent')
     seeking_description = request.form['seeking_description']
     new_venue = Venue(
-      name=name,
+      name = name,
       city = city,
       state = state,
       address = address,
@@ -266,7 +266,9 @@ def create_venue_submission():
       facebook_link = facebook_link,
       image_link = image_link,
       website_link = website_link,
-      seeking_talent = False, #hard coded for testing
+      seeking_talent = seeking_talent, 
+      # next: 
+      # reinstate try/except/finally construction
       seeking_description = seeking_description, 
       )
     db.session.add(new_venue)
